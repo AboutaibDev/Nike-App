@@ -59,7 +59,7 @@ class _ShopPageState extends State<ShopPage> {
                     contentPadding: EdgeInsets.all(20),
                     suffixIcon: IconButton(
                       icon: Icon(Icons.search),
-                      onPressed: () => null,
+                      onPressed: () {},
                     )),
               ),
             ),

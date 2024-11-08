@@ -78,7 +78,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             GestureDetector(
-              onTap: () => null,
+              onTap: () {},
               child: Padding(
                 padding: const EdgeInsets.only(left: 20, top: 40),
                 child: Row(
@@ -101,7 +101,7 @@ class _HomePageState extends State<HomePage> {
             ),
             Spacer(),
             GestureDetector(
-              onTap: () => null,
+              onTap: () {},
               child: Padding(
                 padding: const EdgeInsets.only(left: 20, bottom: 30),
                 child: Row(

@@ -8,11 +8,11 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:eco_app/main.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+testWidgets('Welcome page has welcome text', (WidgetTester tester) async {
+  await tester.pumpWidget(const MyApp());
 
-    // Verify that the welcome page contains "Welcome" text.
-    expect(find.text('Welcome'), findsOneWidget);
-  });
+  // Verify that the welcome page contains "Welcome" text.
+  expect(find.text('Welcome'), findsOneWidget);
+});
+
 }

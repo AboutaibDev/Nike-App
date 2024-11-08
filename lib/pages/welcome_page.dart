@@ -20,7 +20,7 @@ class WelcomePage extends StatelessWidget {
             ),
 
             const SizedBox(
-              height: 170,
+              height: 130,
             ),
             // text 1
             Text(

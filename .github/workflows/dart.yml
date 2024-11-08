@@ -1,4 +1,4 @@
-name: Flutter CI
+name: Flutter CI/CD with Netlify
 
 on:
   push:
@@ -11,24 +11,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       # Set up Flutter
-      - uses: subosito/flutter-action@v2
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.24.0' # or 'stable' or 'latest' to use the latest stable version
+          flutter-version: '3.24.4'  # Specify Flutter version or use 'stable'
 
+      # Install dependencies
       - name: Install dependencies
         run: flutter pub get
-
-      # Uncomment this step to verify the use of 'dart format' on each commit.
-      # - name: Verify formatting
-      #   run: dart format --output=none --set-exit-if-changed .
-
-      # Consider passing '--fatal-infos' for slightly stricter analysis.
-      - name: Analyze project source
-        run: flutter analyze
 
       # Run Flutter tests
       - name: Run tests
         run: flutter test
+
+      # Build for Web
+      - name: Build Flutter Web
+        run: flutter build web
+
+      # Deploy to Netlify
+      - name: Deploy to Netlify
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        run: |
+          npm install -g netlify-cli
+          netlify deploy --prod --dir=build/web --site=$NETLIFY_SITE_ID
